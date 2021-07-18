@@ -77,7 +77,7 @@
     </div>
     <div class="row row-info">
       <?php
-        $dataKukar = file_get_contents("http://localhost/api/kukar.json");
+        $dataKukar = file_get_contents("./data/covid19kabstat.json");
         $kasusKukar = json_decode($dataKukar);
 
         foreach($kasusKukar as $item){
