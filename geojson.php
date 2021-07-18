@@ -1,18 +1,18 @@
 <?php
-	$kawalcoronaKecamatan = file_get_contents("http://localhost/api/kecamatan.json");
+	$kawalcoronaKecamatan = file_get_contents("./data/covid19kecstat.json");
   $kasusKecamatan = json_decode($kawalcoronaKecamatan, TRUE);
 
-  $geojsonKecamatan = file_get_contents("http://geoportal.kukarkab.go.id:8080/geoserver/q_bidang_kesehatan/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=q_bidang_kesehatan%3Akecamatan_point&maxFeatures=18&outputFormat=application%2Fjson");
+  $geojsonKecamatan = file_get_contents("./data/kecamatan_point.json");
   $pointKecamatan = json_decode($geojsonKecamatan, TRUE);
 
   
 	foreach ($pointKecamatan['features'] as $key => $first_value) {
     foreach ($kasusKecamatan as $second_value) {
       if($first_value['properties']['kode_join']==$second_value['attributes']['kode_join']){
-        $pointKecamatan['features'][$key]['properties']['Kasus_Aktif'] = $second_value['attributes']['Kasus_Aktif'];
-      	$pointKecamatan['features'][$key]['properties']['Kasus_Positif'] = $second_value['attributes']['Kasus_Posi'];
-      	$pointKecamatan['features'][$key]['properties']['Kasus_Sembuh'] = $second_value['attributes']['Kasus_Semb'];
-      	$pointKecamatan['features'][$key]['properties']['Kasus_Meninggal'] = $second_value['attributes']['Kasus_Meni'];
+        $pointKecamatan['features'][$key]['properties']['Kasus_Aktif'] = $second_value['attributes']['kasus_aktif'];
+      	$pointKecamatan['features'][$key]['properties']['Kasus_Positif'] = $second_value['attributes']['kasus_posi'];
+      	$pointKecamatan['features'][$key]['properties']['Kasus_Sembuh'] = $second_value['attributes']['kasus_semb'];
+      	$pointKecamatan['features'][$key]['properties']['Kasus_Meninggal'] = $second_value['attributes']['kasus_meni'];
     	} else {}
 		}
 	}
