@@ -95,7 +95,7 @@
       <div class="col-sm-3 text-center text-success bg-dark">
         <div class="row p-3">
           <div class="col-3">
-            <i class="far fa-sad-tear fa-4x"></i>
+            <i class="fas fa-sad-tear fa-4x"></i>
           </div>
           <div class="col text-left">
             <h5><strong>TOTAL KASUS AKTIF</strong></h5>
